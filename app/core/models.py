@@ -80,7 +80,7 @@ class HotelRoomReservation(models.Model):
         """Reservation status."""
 
         PENDING = "pending", _("Pending")
-        CONFIRMED = "paid", _("Paid")
+        PAID = "paid", _("Paid")
         CANCELLED = "cancelled", _("Cancelled")
 
     room = models.ForeignKey(

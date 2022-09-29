@@ -51,13 +51,18 @@ class ReservationInvoiceDetailsSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """Create a new reservation invoice details."""
-        return ReservationInvoiceDetails.objects.create(**validated_data)
+        invoice = ReservationInvoiceDetails.objects.create(**validated_data)
+        invoice.reservation.status = HotelRoomReservation.Status.PAID
+        invoice.reservation.save()
+        return invoice
 
     def update(self, instance, validated_data):
         """Update a reservation invoice details."""
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
         instance.save()
+        instance.reservation.status = HotelRoomReservation.Status.PAID
+        instance.reservation.save()
         return instance
 
 

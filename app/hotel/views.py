@@ -28,6 +28,12 @@ class ReservationInvoiceDetailsViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ReservationInvoiceDetailsSerializer
     queryset = ReservationInvoiceDetails.objects.all()
 
+    def perform_destroy(self, instance):
+        """Delete the reservation."""
+        instance.reservation.status = HotelRoomReservation.Status.PENDING
+        instance.reservation.save()
+        instance.delete()
+
 
 class HotelRoomReservationViewset(viewsets.ModelViewSet):
     """ViewSet for manage hotel room reservation APIs."""

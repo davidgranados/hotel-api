@@ -24,7 +24,19 @@ $ docker-compose run --rm app sh -c "python manage.py createsuperuser"
 
 # Documentación
 ```
-http://localhost:8080/api/docs/#/
+/api/docs/#/
+```
+
+
+# Autenticación
+
+Para autenticarte debes usar el superusuario o crear uno nuevo y obtener un token a través del endpont:
+```
+/api/users/token/
+```
+Ese token lo debes enviar en el Header Authorization ejemplo:
+```
+Token 6cf1e028e4991238f5d576c607b089100114278d
 ```
 
 # Integración
