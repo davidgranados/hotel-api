@@ -1,0 +1,5 @@
+{
+  "makefile.extensionOutputFolder": "./.vscode",
+  "python.linting.flake8Path": "flake8",
+  "python.linting.flake8Args": ["--config=./app/.flake8"],
+}
