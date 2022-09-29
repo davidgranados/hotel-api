@@ -84,7 +84,6 @@ class HotelRoomReservationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         """Create a new hotel room reservation."""
         guests = validated_data.pop("guests", [])
-        print(validated_data)
         reservation = HotelRoomReservation.objects.create(**validated_data)
         self._create_guests(guests, reservation)
         return reservation
